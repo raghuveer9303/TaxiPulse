@@ -1208,15 +1208,14 @@ def update_analytics_page(pathname):
             y=days,
             colorscale='Viridis',  # color-blind safe continuous colorscale
             zmin=0,
-            zmax=z_data.max() * 0.8,
+            zmax=z_data.max() * 0.8,  # Cap for better color distribution
             text=text_matrix,
             hovertemplate='<b>%{y}, %{x}</b><br>Trips: %{z:,.0f}<extra></extra>',
             name='',
             showscale=True,
             colorbar=dict(
-                title="Trip Count",
-                tickfont=dict(size=12),
-                titlefont=dict(size=14)
+                title=dict(text="Trip Count", font=dict(size=14)),
+                tickfont=dict(size=12)
             )
         ))
         
@@ -1714,15 +1713,14 @@ def update_analytics_page(pathname):
             y=days,
             colorscale='Viridis',  # color-blind safe continuous colorscale
             zmin=0,
-            zmax=z_data.max() * 0.8,
+            zmax=z_data.max() * 0.8,  # Cap for better color distribution
             text=text_matrix,
             hovertemplate='<b>%{y}, %{x}</b><br>Trips: %{z:,.0f}<extra></extra>',
             name='',
             showscale=True,
             colorbar=dict(
-                title="Trip Count",
-                tickfont=dict(size=12),
-                titlefont=dict(size=14)
+                title=dict(text="Trip Count", font=dict(size=14)),
+                tickfont=dict(size=12)
             )
         ))
         

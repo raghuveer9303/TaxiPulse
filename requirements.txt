@@ -1,0 +1,26 @@
+# Dash & UI
+dash>=2.9.3
+dash-bootstrap-components>=1.4.1
+
+# Data handling & analysis
+pandas>=2.0.3
+numpy>=1.25.0
+
+# Geospatial libraries
+geopandas>=0.13.2
+shapely>=2.0.1
+fiona>=1.9.3
+pyproj>=3.5.0
+rtree>=0.9.8
+
+# Mapping
+folium>=0.14.0
+
+# Plotly for charts
+plotly>=5.14.1
+
+# Web server
+waitress>=2.1.2
+
+# HTTP requests
+requests>=2.31.0

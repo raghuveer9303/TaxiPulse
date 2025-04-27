@@ -6,6 +6,9 @@ import folium
 from folium.plugins import HeatMap
 from shapely.geometry import Point
 from waitress import serve
+import logging
+from datetime import datetime
+from flask import jsonify
 
 import dash
 from dash import Dash, dcc, html, dash_table, Input, Output, State, callback
@@ -14,6 +17,13 @@ import plotly.express as px
 import plotly.graph_objects as go
 from dash.exceptions import PreventUpdate
 import plotly.figure_factory as ff
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 # --- Data Loading and Preparation ---
 # Data sources (Assuming files are accessible)
@@ -1291,11 +1301,7 @@ def update_analytics_page(pathname):
 # --- Run the App ---
 if __name__=='__main__':
     print('Starting Dash server...')
-    # Use app.run_server for development (includes hot-reloading)
-    # app.run_server(debug=True, host='127.0.0.1', port=8080)
-
-    # Use serve for production deployment (more stable)
-    # Make sure waitress is installed: pip install waitress
+    logger.info('Application starting up...')
     print("Dash app running on http://0.0.0.0:8080/")
     serve(server, host='0.0.0.0', port=8080)
 
@@ -1791,4 +1797,18 @@ def update_analytics_page(pathname):
         )
     
     return total_trips_str, avg_fare_str, total_distance_str, avg_distance_str, payment_fig, passenger_fig, weekday_line, revenue_bar, heatmap
+
+
+@server.route('/health')
+def health_check():
+    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    logger.info(f'Health check endpoint called at {current_time}')
+    return jsonify({'status': 'healthy', 'timestamp': current_time})
+
+# --- Run the App ---
+if __name__=='__main__':
+    print('Starting Dash server...')
+    logger.info('Application starting up...')
+    print("Dash app running on http://0.0.0.0:8080/")
+    serve(server, host='0.0.0.0', port=8080)
 

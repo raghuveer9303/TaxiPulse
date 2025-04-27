@@ -12,6 +12,7 @@ shapely>=2.0.1
 fiona>=1.9.3
 pyproj>=3.5.0
 rtree>=0.9.8
+flask
 
 # Mapping
 folium>=0.14.0

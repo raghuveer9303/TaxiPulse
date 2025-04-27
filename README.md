@@ -1,4 +1,5 @@
-# Taxi Data Preprocessing Project
+# **TaxiPulse** - *NYC Taxi Intelligence*
+
 
 This project processes taxi trip data with spatial information, combining it with NYC taxi zone data to create an enriched dataset for analysis.
 

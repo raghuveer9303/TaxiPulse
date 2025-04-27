@@ -1,70 +1,62 @@
-# **TaxiPulse** - *NYC Taxi Intelligence*
+# 🚖 TaxiPulse - NYC Taxi Intelligence Dashboard
 
+**TaxiPulse** is a powerful web-based dashboard that transforms NYC Yellow Taxi trip data into valuable insights for maximizing earnings.  
+It combines spatial analysis, dynamic charts, and interactive maps to help taxi drivers and fleet managers **optimize their strategies**.
 
-This project processes taxi trip data with spatial information, combining it with NYC taxi zone data to create an enriched dataset for analysis.
+🔗 **Live Demo**: [https://taxipulse.onrender.com](https://taxipulse.onrender.com)
 
-## Project Description
+---
 
-The project performs the following operations:
-1. Downloads taxi trip data from a Google Sheets source
-2. Cleans and validates coordinate data
-3. Performs spatial joins with NYC taxi zones
-4. Calculates additional features like pickup hour, day, and tip percentages
-5. Saves the preprocessed data in Parquet format
+## 📄 Project Description
 
-## Prerequisites
+TaxiPulse performs:
 
-- Python 3.7 or higher
-- Required Python packages (see requirements.txt)
-- Taxi zones shapefile (included in the `taxi_zones/` directory)
+- 📥 **Live Data Download**: Pulls trip data from a Google Sheets source.
+- 🧹 **Data Cleaning**: Validates coordinates, filters outliers.
+- 🌐 **Spatial Join**: Matches trips to official NYC Taxi Zones.
+- ✨ **Feature Engineering**: Adds pickup/dropoff zones, boroughs, hours, days, and tip percentages.
+- 📊 **Data Visualization**: Interactive graphs and maps to explore trip patterns.
+- 📦 **Data Storage**: Saves processed data as fast, efficient Parquet files.
 
-## Installation
+---
 
-1. Clone this repository
-2. Create a virtual environment (recommended):
+## 🚀 Features
+
+- 📈 Dynamic Dashboard for earnings and demand/supply analysis
+- 🗺️ Interactive Revenue Choropleth Map and Pickup Heatmap
+- 📊 Analytics Page for payment trends, passenger counts, weekday performance
+- 📦 Efficient Parquet storage for preprocessed datasets
+- 🐳 Dockerized and cloud-ready deployment
+- 🛡️ Robust error handling for missing data and failures
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer              | Technologies                             |
+|--------------------|------------------------------------------|
+| Backend/API        | Python 3.9, Flask, Waitress              |
+| Frontend Dashboard | Dash, Plotly, Dash Bootstrap Components  |
+| Spatial Analysis   | GeoPandas, Folium, Shapely               |
+| Data Storage       | Parquet (via Pandas)                     |
+| Deployment         | Docker, Render Cloud                    |
+
+---
+
+## ⚙️ Installation
+
+### Local Setup
+
 ```bash
+git clone https://github.com/yourusername/taxipulse.git
+cd taxipulse
 python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
-```
-3. Install required packages:
-```bash
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install --upgrade pip
 pip install -r requirements.txt
+python app.py
 ```
 
-## Usage
-
-1. Ensure the taxi_zones folder containing the shapefile is in the project directory
-2. Run the preprocessing script:
-```bash
-python create_csv.py
-```
-
-The script will:
-- Download the latest taxi data
-- Process and clean the data
-- Perform spatial analysis
-- Save the results as `preprocessed_taxi_data.parquet`
-
-## Data Output
-
-The processed data includes the following additional columns:
-- pickup_zone: The NYC taxi zone where the pickup occurred
-- pickup_borough: The borough where the pickup occurred
-- dropoff_zone: The NYC taxi zone where the dropoff occurred
-- dropoff_borough: The borough where the dropoff occurred
-- pickup_hour: Hour of the day when pickup occurred
-- pickup_day: Day of the week
-- tip_pct: Tip percentage calculated from the fare
-
-## Error Handling
-
-The script includes comprehensive error handling for:
-- Missing data files
-- Invalid coordinates
-- Missing columns
-- Data type conversion issues
-- File saving errors
-
-## Dependencies
-
-See requirements.txt for a complete list of Python package dependencies.
+## Docker 
+docker build -t taxipulse .
+docker run -d -p 8080:8080 taxipulse

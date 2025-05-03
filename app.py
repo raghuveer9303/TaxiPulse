@@ -247,12 +247,20 @@ card_peak_hour = card_peak('Peak Earning Hour','peak-hour','peak-hour-value')
 card_tip_area = card_peak('Highest Avg Tip Zone','top-tip-area','top-tip-value')
 card_best_day = card_peak('Best Earning Day','best-day','best-day-value')
 
-# Navbar (Same as before)
+# Navbar with video link
 navbar = dbc.NavbarSimple(
     children=[
         dbc.NavItem(dbc.NavLink("Dashboard", href="/", id="dashboard-link")),
         dbc.NavItem(dbc.NavLink("Hotspots", href="/hotspots", id="hotspots-link")),
         dbc.NavItem(dbc.NavLink("Analytics", href="/analytics", id="analytics-link")),
+        dbc.NavItem(
+            dbc.NavLink(
+                "📹 Watch Demo Video", 
+                href="https://indiana-my.sharepoint.com/:v:/g/personal/ragvenk_iu_edu/Eas6Utk2eM5IoKGrsl8OUacBOgfnFyfMnnRJ0i7j3GuqMg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=IEZwYJ",
+                target="_blank",
+                style={"border": "1px solid white", "border-radius": "4px", "padding": "4px 8px", "margin-left": "10px", "color": "white", "font-weight": "bold"}
+            )
+        ),
     ],
     brand='🚕 NYC Taxi Earnings Maximizer',
     brand_href="/",
